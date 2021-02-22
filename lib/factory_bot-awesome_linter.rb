@@ -84,7 +84,7 @@ module FactoryBot
         FactoryBot.public_send(@factory_strategy, factory.name, trait.name)
       end
     rescue StandardError => e
-      invalid_factory! e, factory
+      invalid_factory! e, factory, trait
     end
 
     def invalid_factory!(error, factory, trait = nil)

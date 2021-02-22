@@ -9,7 +9,7 @@ module FactoryBot
       new(*args, **kwargs).lint!
     end
 
-    def initialize(*args, strategy: :create, traits: false)
+    def initialize(*args, strategy: :create, traits: true)
       @factories_to_lint = load_factories(*args)
 
       @factory_strategy  = strategy

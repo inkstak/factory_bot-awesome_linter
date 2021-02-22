@@ -49,10 +49,13 @@ module FactoryBot
 
     def calculate_total
       factories_to_lint.reduce(0) do |count, factory|
-        # Compile factory to count enum traits
-        factory.compile
-
-        count + 1 + factory.definition.defined_traits.size
+        if @traits
+          # Compile factory to count enum traits
+          factory.compile
+          count + 1 + factory.definition.defined_traits.size
+        else
+          count + 1
+        end
       end
     end
 

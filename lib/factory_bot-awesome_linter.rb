@@ -9,17 +9,11 @@ module FactoryBot
       new(*args, **kwargs).lint!
     end
 
-    def initialize(*args, strategy: :create, traits: false, verbose: false)
-      if args.any?
-        @factories_to_lint = args[0]
-      else
-        FactoryBot.reload
-        @factories_to_lint = FactoryBot.factories
-      end
+    def initialize(*args, strategy: :create, traits: false)
+      @factories_to_lint = load_factories(*args)
 
       @factory_strategy  = strategy
       @traits            = traits
-      @verbose           = verbose
       @progress_bar      = ProgressBar.create(format: "\e[0;32m %c/%C |%w>%i| %e \e[0m")
       @invalid_factories = []
     end
@@ -45,6 +39,26 @@ module FactoryBot
 
       output_invalid_factories
       invalid_factories.empty?
+    end
+
+    def load_factories(*args)
+      p args
+
+      FactoryBot.reload
+      return FactoryBot.factories if args.empty?
+
+      args.flat_map do |arg|
+        case arg
+        when Symbol, String
+          FactoryBot.factories.find(arg)
+        when Regexp
+          FactoryBot.factories.select { |factory| factory.name.match?(arg) }
+        when FactoryBot::Factory
+          arg
+        else
+          raise TypeError, "unexpected argument: #{arg}"
+        end
+      end
     end
 
     def calculate_total

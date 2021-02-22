@@ -42,8 +42,6 @@ module FactoryBot
     end
 
     def load_factories(*args)
-      p args
-
       FactoryBot.reload
       return FactoryBot.factories if args.empty?
 

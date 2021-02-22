@@ -89,3 +89,10 @@ Then run :
 ```
 bundle exec bin/rails factory_bot:lint RAILS_ENV='test'
 ```
+
+## Contributing
+
+1. Don't hesitate to submit your feature/idea/fix in [issues](https://github.com/inkstak/factory_bot-awesome_linter)
+2. Fork the [repository](https://github.com/inkstak/factory_bot-awesome_linter)
+3. Create your feature branch
+4. Create a pull request

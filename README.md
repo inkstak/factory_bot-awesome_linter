@@ -10,6 +10,7 @@ This gem enhances [FactoryBot linter](https://github.com/thoughtbot/factory_bot/
 * it shows backtraces when factories failed
 * it lints all factories and traits by default
 * it allows easy selection of factories
+* it reloads cached factories before each run
 
 ## Installation
 
@@ -39,7 +40,7 @@ factories_to_lint = FactoryBot.factories.reject do |factory|
   factory.name =~ /^old_/
 end
 
-FactoryBot::AwesomeLinter.lint!(factories_to_lint)
+FactoryBot::AwesomeLinter.lint!(*factories_to_lint)
 ```
 
 All traits are included by default.  

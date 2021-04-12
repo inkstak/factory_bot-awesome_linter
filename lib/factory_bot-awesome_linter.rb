@@ -45,7 +45,7 @@ module FactoryBot
       FactoryBot.reload
       return FactoryBot.factories if args.empty?
 
-      args.flat_map do |arg|
+      args.flatten.map do |arg|
         case arg
         when Symbol, String
           FactoryBot.factories.find(arg)

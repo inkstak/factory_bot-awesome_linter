@@ -122,7 +122,10 @@ module FactoryBot
         DatabaseCleaner.cleaning(&block)
       elsif defined?(ActiveRecord)
         @activerecord_connection ||= ActiveRecord::Base.connection
-        @activerecord_connection.transaction(&block)
+        @activerecord_connection.transaction do
+          yield
+          raise ActiveRecord::Rollback
+        end
       else
         raise "No cleaning strategie available, you may require or include database-cleaner in your Gemfile"
       end

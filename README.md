@@ -65,14 +65,13 @@ FactoryBot::AwesomeLinter.lint!(:user, strategy: :build, traits: false)
 
 ## Rake task
 
-Create the following task in `lib/tasks/factory_bot.rake`
+Create the following task in `lib/tasks/factory_bot.rake`
 
 ```ruby
 namespace :factory_bot do
   desc "Verify that all FactoryBot factories are valid"
   task lint: :environment do
     if Rails.env.test?
-      require 'factory_bot/awesome_linter'
       abort unless FactoryBot::AwesomeLinter.lint!
     else
       puts "Wrong environment detected to run factory_bot:lint"

@@ -15,7 +15,7 @@ This gem enhances [FactoryBot linter](https://github.com/thoughtbot/factory_bot/
 [![Gem Version](https://badge.fury.io/rb/factory_bot-awesome_linter.svg)](https://rubygems.org/gems/factory_bot-awesome_linter)
 [![CI Status](https://github.com/inkstak/factory_bot-awesome_linter/actions/workflows/ci.yml/badge.svg)](https://github.com/inkstak/factory_bot-awesome_linter/actions/workflows/ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9bb8b75ea8c66b1a9c94/maintainability)](https://codeclimate.com/github/inkstak/factory_bot-awesome_linter/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/9bb8b75ea8c66b1a9c94/test_coverage)](https://codeclimate.com/github/inkstak/factory_bot-awesome_linter/test_coverage)
+<!-- [![Test Coverage](https://api.codeclimate.com/v1/badges/9bb8b75ea8c66b1a9c94/test_coverage)](https://codeclimate.com/github/inkstak/factory_bot-awesome_linter/test_coverage) -->
 
 ## Installation
 

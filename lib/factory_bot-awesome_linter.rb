@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'factory_bot'
-require 'ruby-progressbar'
+require "factory_bot"
+require "ruby-progressbar"
 
 module FactoryBot
   class AwesomeLinter
@@ -11,10 +11,9 @@ module FactoryBot
 
     def initialize(*args, strategy: :create, traits: true)
       @factories_to_lint = load_factories(*args)
-
-      @factory_strategy  = strategy
-      @traits            = traits
-      @progress_bar      = ProgressBar.create(format: "\e[0;32m %c/%C |%w>%i| %e \e[0m")
+      @factory_strategy = strategy
+      @traits = traits
+      @progress_bar = ProgressBar.create(format: "\e[0;32m %c/%C |%w>%i| %e \e[0m")
       @invalid_factories = []
     end
 
@@ -75,7 +74,7 @@ module FactoryBot
       cleaning do
         FactoryBot.public_send(@factory_strategy, factory.name)
       end
-    rescue StandardError => e
+    rescue => e
       invalid_factory! e, factory
     end
 
@@ -83,7 +82,7 @@ module FactoryBot
       cleaning do
         FactoryBot.public_send(@factory_strategy, factory.name, trait.name)
       end
-    rescue StandardError => e
+    rescue => e
       invalid_factory! e, factory, trait
     end
 

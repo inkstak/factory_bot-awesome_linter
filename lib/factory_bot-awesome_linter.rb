@@ -11,7 +11,7 @@ module FactoryBot
 
     def initialize(*args, strategy: :create, traits: true)
       @factories_to_lint = load_factories(*args)
-      @factory_strategy = strategy
+      @factory_strategies = Array.wrap(strategy)
       @traits = traits
       @progress_bar = ProgressBar.create(format: "\e[0;32m %c/%C |%w>%i| %e \e[0m")
       @invalid_factories = []
@@ -71,16 +71,20 @@ module FactoryBot
     end
 
     def lint_factory(factory)
-      cleaning do
-        FactoryBot.public_send(@factory_strategy, factory.name)
+      @factory_strategies.each do |stategy|
+        cleaning do
+          FactoryBot.public_send(stategy, factory.name)
+        end
       end
     rescue => e
       invalid_factory! e, factory
     end
 
     def lint_trait(factory, trait)
-      cleaning do
-        FactoryBot.public_send(@factory_strategy, factory.name, trait.name)
+      @factory_strategies.each do |stategy|
+        cleaning do
+          FactoryBot.public_send(stategy, factory.name, trait.name)
+        end
       end
     rescue => e
       invalid_factory! e, factory, trait

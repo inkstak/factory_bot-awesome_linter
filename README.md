@@ -19,10 +19,10 @@ This gem enhances [FactoryBot linter](https://github.com/thoughtbot/factory_bot/
 
 ## Installation
 
-Add these line to your application's Gemfile:
+Add the gem in your Gemfile:
 
-```ruby
-gem 'factory_bot-awesome_linter'
+```shell
+bundle add factory_bot-awesome_linter
 ```
 
 ## Usage
@@ -70,29 +70,16 @@ FactoryBot::AwesomeLinter.lint!(:user, strategy: :build, traits: false)
 
 ## Rake task
 
-Create the following task in `lib/tasks/factory_bot.rake`
+Run the following command to create a rake task at `lib/tasks/factory_bot.rake`:
 
-```ruby
-namespace :factory_bot do
-  desc "Verify that all FactoryBot factories are valid"
-  task lint: :environment do
-    if Rails.env.test?
-      abort unless FactoryBot::AwesomeLinter.lint!
-    else
-      puts "Wrong environment detected to run factory_bot:lint"
-      puts "Running `bundle exec bin/rails factory_bot:lint RAILS_ENV='test'` instead"
-
-      system("bundle exec bin/rails factory_bot:lint RAILS_ENV='test'")
-      exit $CHILD_STATUS.exitstatus
-    end
-  end
-end
+```shell
+rails g factory_bot:awesome_linter:install
 ```
 
-Then run :
+Then, run:
 
-```
-bundle exec bin/rails factory_bot:lint RAILS_ENV='test'
+```shell
+rails factory_bot:lint
 ```
 
 ## TODO

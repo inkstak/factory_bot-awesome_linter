@@ -56,10 +56,11 @@ FactoryBot::AwesomeLinter.lint!(traits: false)
 ```
 
 Default linting strategy is `:create`.  
-You can specify another strategy used for linting:
+You can specify another or multiple strategies used for linting:
 
 ```ruby
 FactoryBot::AwesomeLinter.lint!(strategy: :build)
+FactoryBot::AwesomeLinter.lint!(strategy: %i[create build_stubbed])
 ```
 
 All arguments can be combined:

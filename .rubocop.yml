@@ -1,15 +1,14 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rspec
   - rubocop-rake
+
+require:
   - standard
 
 inherit_gem:
-  standard:
-    - config/base.yml
-    - config/ruby-2.5.yml
-    - config/ruby-2.7.yml
-    - config/ruby-3.0.yml
+  standard: config/base.yml
+  standard-performance: config/base.yml
 
 AllCops:
   NewCops: enable
